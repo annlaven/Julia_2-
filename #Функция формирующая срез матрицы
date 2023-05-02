@@ -1,0 +1,10 @@
+# Написать функцию, формирующую срез заданной матрицы по заданным наборам индексов - имеется ввиду без использования конструкции A[I,J], где I,J - два заданных набора индексов (в примере выше, например, I=[1,2], J=[2,4,5,2]).
+function slice(A::Matrix,I::Vectot{Int},J::Vector{Int})
+    B=Matrix{eltype(A)}(undef,length(I),length(J))
+    for i in I
+        for j in J
+            B[i,j]=A[I[i],J[j]]
+        end
+    end
+    return B
+end
