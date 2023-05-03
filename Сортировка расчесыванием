@@ -1,0 +1,42 @@
+17)	#&# Сортировка расчесыванием
+function comb_sort!(A)
+g = length(A)
+sorted = false
+sm=0
+while !sorted
+g /= 1.237
+if g < 1
+g = 1
+sorted = true
+end
+swapped = false
+for i in 1:length(A)-floor(Int, g)
+sm = floor(Int, g) + i
+if A[i] > A[sm]
+A[i], A[sm] = A[sm], A[i]
+swapped = false
+end
+end
+end
+end
+f(x) = x
+
+ИЛИ
+
+#Основная идея «расчёски» в том, чтобы первоначально брать достаточно большое расстояние
+между сравниваемыми элементами и по мере упорядочивания массива сужать это расстояние
+вплоть до минимального. Таким образом, мы как бы причёсываем массив, постепенно
+разглаживая на всё более аккуратные пряди.
+function brush_sort!(a)
+n = lenght(a)
+factor = 1.2473309
+while step >= 1
+for i in n
+if a[i] > a[i+step]
+a[i] = a[i+step]
+end
+end
+step = int(floor(step/factor))
+end
+return a
+end
