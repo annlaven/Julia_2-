@@ -1,82 +1,18 @@
 1)	#&# Сортирвка пузырьком. issorted, sortperm!, sort!. Сортировка по значению функции.
 Сортировка пузырьком
 function bubblesort!(a)
-n = length(a)
-for k in 1:n-1
-is_sorted = true
-for i in 1:n-k
-if a[i]>a[i+1]
-a[i], a[i+1] = a[i+1], a[i]
-is_sorted = false
+  n = length(a)
+        for k in 1:n-1
+          is_sorted = true
+        for i in 1:n-k
+          if a[i]>a[i+1]
+          a[i], a[i+1] = a[i+1], a[i]
+          is_sorted = false
+      end
+    end
+    if is_sorted
+    break
+    end
+  end
+  return a
 end
-end
-if is_sorted
-break
-end
-end
-return a
-end
-bubblesort(a) = bubblesort!(deepcopy(a))
-реализация функции issorted
-function issorted(A)
-for i in 1:length(A)-1
-if A[i+1]<A[i]
-return false
-end
-end
-return true
-end
-или
-function issorted_(a)
-prev = a[1]
-for i in a[2:end]
-if i < prev
-return false
-end
-prev = i
-end
-return true
-end
-2)	#&# Findall, findfirst, findlast, filter
-function findall_(f::Function, A)
-s = []
-for i in 1:length(A)
-if f(A[i])
-push!(s, i)
-end
-end
-return s
-end
-ии
-function findfirst_(A, a)
-for i in 1:length(A)
-if A[i] == a
-return i
-end
-end
-return nothing
-end
-ии
-function findlast_(A, a)
-ix = nothing
-for i in 1:length(A)
-if A[i] == a
-ix=i
-end
-end
-return ix
-end
-ии
-function filter_(f, A)
-s = []
-for i in 1:length(A)
-if f(A[i]) != false
-push!(s, A[i])
-end
-end
-return s
-end
-
-Базовый пример сортировка пузырьком в матрице
-sortslices([7 3 5; -1 6 4; 9 -2 8], dims=1) # Сортировать строки
-3×3 Matrix{Int64}:
