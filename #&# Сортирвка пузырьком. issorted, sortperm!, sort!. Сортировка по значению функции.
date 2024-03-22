@@ -1,18 +1,10 @@
-1)	#&# Сортирвка пузырьком. issorted, sortperm!, sort!. Сортировка по значению функции.
-Сортировка пузырьком
-function bubblesort!(a)
-  n = length(a)
-        for k in 1:n-1
-          is_sorted = true
-          for i in 1:n-k
-            if a[i]>a[i+1]
-            a[i], a[i+1] = a[i+1], a[i]
-            is_sorted = false
-          end
+"""Сортировка пузырьком (последние i элементов всегда будут отсортированы, поэтому вложенный цикл до len - i элементов)"""
+function bubbleSortModF!(array::AbstractVector)
+    for i in 1:length(array)
+        for j in 1:length(array)-i
+            if array[j] > array[j+1]
+                swap!(array, j, j+1)
+            end
         end
-    if is_sorted
-    break
     end
-  end
-  return a
 end
