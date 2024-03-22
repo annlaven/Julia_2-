@@ -3,16 +3,15 @@
 между сравниваемыми элементами и по мере упорядочивания массива сужать это расстояние
 вплоть до минимального. Таким образом, мы как бы причёсываем массив, постепенно
 разглаживая на всё более аккуратные пряди.
-function brush_sort!(a)
-  n = lenght(a)
-  factor = 1.2473309
-    while step >= 1
-        for i in n
-       if a[i] > a[i+step]
-  a[i] = a[i+step]
+function comb_sort!(array::AbstractVector)
+    gap = length(array)
+    while gap != 0
+        for i in firstindex(array):lastindex(array)-gap
+            if array[i] > array[i+gap]
+                array[i], array[i+gap] = array[i+gap], array[i]
+            end
         end
-      end
-      step = int(floor(step/factor))
+        gap-=1
     end
-return a
-end
+    return array
+end       
