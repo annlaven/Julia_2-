@@ -1,21 +1,21 @@
-# Поиск в массиве заданного элемента
-function quick_sort!(A)
-if isempty(A)
-return A
+"""Поиск всех максимальных значений массива"""
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
 end
-N = length(A)
-K, M = part_sort!(A, A[rand(1:N)]) # - "базовый" элемент массива выбирается
-случайным образом
-quick_sort!(@view A[1:K])
-quick_sort!(@view A[M:N])
-return A
-end
-#Базовй пример:
-
-array1 = [ 12, 35, 7, 34, 72, 12, 5 ]
-sch = 12
-
-indexArray = findall( x -> x == sch, array1 )
-for i in indexArray
-	println("Element found at position ", i)
+function findAllMax(array::AbstractVector)
+    index_max = Vector{Int}(undef, length(array))
+    index_max[begin] = firstindex(array)
+    j = 1
+    for i in 1:length(array)
+        if array[i] > array[index_max[begin]]
+            index_max[begin] = i
+            j = 1
+        elseif array[i] == array[index_max[begin]]
+            index_max[begin+j] = i
+            j+=1
+        end
+    end
+    return index_max[1:j]
 end
