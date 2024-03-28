@@ -3,6 +3,11 @@
 между сравниваемыми элементами и по мере упорядочивания массива сужать это расстояние
 вплоть до минимального. Таким образом, мы как бы причёсываем массив, постепенно
 разглаживая на всё более аккуратные пряди.
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+end
 function comb_sort!(array::AbstractVector)
     gap = length(array)
     while gap != 0
