@@ -1,10 +1,15 @@
-# Написать функцию, формирующую срез заданной матрицы по заданным наборам индексов - имеется ввиду без использования конструкции A[I,J], где I,J - два заданных набора индексов (в примере выше, например, I=[1,2], J=[2,4,5,2]).
-function slice(A::Matrix,I::Vectot{Int},J::Vector{Int})
-    B=Matrix{eltype(A)}(undef,length(I),length(J))
-    for i in I
-        for j in J
-            B[i,j]=A[I[i],J[j]]
+Сортировка Шелла (8)
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+end
+function shellSort!(array::AbstractVector)
+    gap = length(array)
+    while gap > 0
+        for i in 1:lastindex(array)-gap
+            insertionSort!(@view array[i:gap:lastindex(array)])
         end
+        gap = div(gap, 2)
     end
-    return B
 end
