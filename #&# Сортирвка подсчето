@@ -1,4 +1,4 @@
-Удаление элемента по индексу
+Удаление элемента по индексу (9)
 function swap!(array::AbstractVector, i::Int, j::Int)
     temp = array[i]
     array[i] = array[j]
