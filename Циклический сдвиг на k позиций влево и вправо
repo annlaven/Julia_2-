@@ -1,18 +1,10 @@
-8)	#&# Циклический сдвиг на k позиций влево и вправо
-function circshift_right!(a)
-buf = a[end]
-for i in lastindex(a):-1:firstindex(a)-1
-a[i] = a[i-1]
-end
-a[begin] = buf
-end
-
-And
-
-function circshift_left!(a)
-buf = a[begin]
-for i in firstindex(a):lastindex(a)-1
-a[i] = a[i+1]
-end
-a[begin] = buf
+Проверяет является ли массив множеством и сортирует его
+function isAllUnique_(A::AbstractVector)
+    sort!(A)
+    for i in 2:lenght(A)
+        if A[i] == A[i-1]
+            return false
+        end
+    end
+    return true
 end
