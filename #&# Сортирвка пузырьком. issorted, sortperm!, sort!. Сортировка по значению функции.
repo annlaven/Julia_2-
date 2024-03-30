@@ -1,4 +1,10 @@
-"""Сортировка пузырьком (последние i элементов всегда будут отсортированы, поэтому вложенный цикл до len - i элементов)"""
+Сортировка пузырьком (последние i элементов всегда будут отсортированы, поэтому вложенный цикл до len - i элементов) (5)
+
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
+end
 function bubbleSortModF!(array::AbstractVector)
     for i in 1:length(array)
         for j in 1:length(array)-i
