@@ -1,39 +1,12 @@
-43)	#&# Пусть имеется некоторый выпуклый многоугольник (выпуклая оболочка некотрого множества точек плоскости) и дана ещё дна тока. Требуется написать функцию, строющую выпуклую оболочку множества точек, включающее также и эту новую точку. Протестировать программу с построением графиков.
-function add_point(plg::Vector{Vector2D{T}}, m::Vector2D{T}) where T
-if in_plg(m, plg)
-return plg
+Перестановка двух элементов (4)
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
 end
-vector_m = Vector2D{T}((0,0))
-vector_nextp = Vector2D{T}((0, 0))
-vector_currentp = Vector2D{T}((plg[1].x-plg[end-1].x, plg[1].y-plg[end-
-1].y))
-for i in 1:length(plg)-1
-vector_m = Vector2D{T}((m.x-plg[i].x, m.y-plg[i].y))
-vector_nextp = Vector2D{T}((plg[i+1].x-plg[i].x, plg[i+1].y-
-plg[i].y))
-if (vec_angle(vector_currentp, vector_nextp) >=
-vec_angle(vector_currentp, vector_m))
-k = i+1
-while true
-if k == length(plg)
-wrap = plg[:]
-insert!(wrap, k, m)
-return wrap
-end
-vector_m = Vector2D{T}((plg[k].x-m.x, plg[k].y-m.y))
-vector_mnext = Vector2D{T}((plg[k+1].x-m.x, plg[k+1].y-m.y))
-println(plg[k], vector_currentp, vector_m, vector_mnext)
-if vec_angle(vector_currentp, vector_m) >=
-vec_angle(vector_currentp, vector_mnext)
-println(1)
-wrap = plg[begin:i]
-push!(wrap, m) #пересоздается оболчка, затраты памяти
-append!(wrap, plg[k:end])
-return wrap
-end
-k+=1
-end
-end
-vector_currentp=vector_nextp
-end
+
+function swap!(array, i, j)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
 end
