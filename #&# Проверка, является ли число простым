@@ -1,10 +1,37 @@
-23)	#&# Проверка, является ли число простым
+Сортировка пузырьком (двухсторонняя)  (6)
 
-function isprime_(n::T)::Bool where T <: Integer
-for i in 2:round(T, sqrt(n))
-if n % i == 0
-return false
+function swap!(array::AbstractVector, i::Int, j::Int)
+    temp = array[i]
+    array[i] = array[j]
+    array[j] = temp
 end
-end
-return true
+
+function bubbleSortModS!(array::AbstractVector)
+    counter = 0
+    start = 2
+    stop = length(array)-1
+    step = 1
+    for i in 1:(length(array)/2+1)
+        for j in start:step:stop
+            if step == 1
+                if array[j] > array[j+step]
+                    swap!(array, j, j+step)
+                end
+            end
+            if step == -1
+                if array[j] < array[j+step]
+                    swap!(array, j, j+step)
+                end
+            end
+        end
+        if step == 1
+            stop -= 1
+        elseif step == -1
+            start += 1
+        end
+        step = -step
+        temp = start
+        start = stop
+        stop = temp
+    end
 end
