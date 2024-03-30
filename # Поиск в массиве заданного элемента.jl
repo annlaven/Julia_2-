@@ -1,4 +1,4 @@
-"""Поиск всех максимальных значений массива"""
+Поиск всех максимальных значений массива (7)
 function swap!(array::AbstractVector, i::Int, j::Int)
     temp = array[i]
     array[i] = array[j]
